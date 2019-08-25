@@ -1,3 +1,5 @@
+// @ts-check
+
 let ex1: string = 'hello';
 let ex2: string | number = 'hello';
 
@@ -28,3 +30,19 @@ export enum Age {
 function totalAge(age1: Age, age2: Age) {
     return Age.dylan + age2;
 }
+
+function add(val1: number, val2: number): number {
+    return val1 + val2;
+}
+
+function neverExample(): never {
+    throw Error
+}
+
+// Interfaces
+export interface Person {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+}
+
