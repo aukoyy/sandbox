@@ -14,6 +14,10 @@ notes = ['kjøp stuff til julebord']
 def get_notes():
     return jsonify(notes)
 
+@app.route('/notes2', methods=['GET'])
+def get_notes2():
+    return jsonify(notes)
+
 @app.route('/notes', methods=['POST'])
 def post_note():
     new_note = request.args.get('new-note')
