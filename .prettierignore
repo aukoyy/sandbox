@@ -1,0 +1,28 @@
+# Config files
+.prettierignore
+.gitignore
+.env
+tsconfig.json
+Dockerfile
+package-lock.json
+
+# Generated files
+dist
+.out
+*.js
+*.js.map
+*.d.ts
+.firebaserc
+
+# Dependencies
+node_modules
+node_modules/
+
+# Other non-important file types
+*.sh
+*.snap
+*.html
+*.snap
+*.html
+*.png
+*.svg
