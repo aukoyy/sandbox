@@ -36,6 +36,9 @@ app.get('/file', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 });
 
+// SERVE CURRENT FOLDER (QUICK SETUP)
+app.use('/', express.static(__dirname));
+
 // SET STATIC FOLDER - all files in this folder is accessable
 // app.use(express.static(path.join(__dirname, 'public')));
 
