@@ -9,26 +9,29 @@
   <title>Fetch API Sandbox</title>
 </head>
 <body>
-  <div class="px-16">
-  <h1 class="text-4xl text-gray-700 font-light">Fetch API Sandbox</h1>
-    <button class="px-4 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded" id="getText">Get Text</button>
-    <button class="ml-4 px-4 py-1 bg-green-500 hover:bg-green-600 text-white rounded" id="getUsers">Get local JSON</button>
-    <button class="ml-4 px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded" id="getPosts">Get API Data</button>
+  <div class="px-16 lg:w-1/2">
+    <h1 class="text-4xl text-gray-700 font-light">Fetch API Sandbox</h1>
+    <div class="flex justify-around flex-col md:flex-row">
+      <button class="px-4 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded" id="getText">Get Text</button>
+      <button class="px-4 py-1 bg-green-500 hover:bg-green-600 text-white rounded" id="getUsers">Get local JSON</button>
+      <button class="px-4 py-1 bg-yellow-500 hover:bg-yellow-600 text-white rounded" id="getPosts">Get API Data</button>
+    </div>
 
-    <div id="output"></div>
-
-    <form action="" id="addPost">
+    <form>
       <div class="mt-8">
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="title" placeholder="title">
       </div>
       <div class="mt-2">
         <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="body" placeholder="body"></textarea>
       </div>
-      <input class="w-56 cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="submit">
+      <input id="addPost" class="w-56 cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="submit">
     </form>
+
+    <div id="output" class="mt-8"></div>
+
   </div>
 
-<script>
+  <script>
     const getText = () => {
         fetch('sample.txt')
             .then((res) => res.text())
@@ -62,7 +65,7 @@
                  let output = '<h2 class="text-2xl mt-8">Posts</h2>';
                  data.forEach(post => {
                      output += `
-                        <div class="shadow-lg rounded my-4 p-4">
+                        <div class="shadow-md rounded my-4 p-4">
                           <h3 class="font-bold">${post.title}</h3>
                           <p>${post.body}</p>
                         </div>
@@ -87,7 +90,17 @@
           body: JSON.stringify({title, body})
       })
           .then(res => res.json())
-          .then(data => console.log(data))
+          .then(post => {
+              console.log(post)
+              let output = '<h2 class="text-2xl mt-8">Posts</h2>';
+              output += `
+                    <div class="shadow-md rounded my-4 p-4">
+                      <h3 class="font-bold">${post.title}</h3>
+                      <p>${post.body}</p>
+                    </div>
+                 `;
+          document.getElementById('output').innerHTML = output;
+          })
     };
 
     document.getElementById('getText').addEventListener('click', getText);
