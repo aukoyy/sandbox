@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 
 target_url = 'https://knowit-julekalender.s3.eu-central-1.amazonaws.com/sau.txt'
-
 data = urlopen(target_url)
 
 sheep_oneliner = data.read().decode()
@@ -29,7 +28,6 @@ for number_of_sheep in daily_sheep:
         surplus_sheep = number_of_sheep - dragon_size
         dragon_size += 1
     else:
-        surplus_sheep = 0
         dragon_size -= 1
         starving_days += 1
 
