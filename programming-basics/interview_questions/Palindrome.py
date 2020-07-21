@@ -8,8 +8,10 @@ def reverseInteger(num1):
     reversedVariable.reverse()
     return int(''.join(reversedVariable))
 
+
 def isPalindrome(variable):
     return variable == reverseInteger(variable)
+
 
 def palindromeMachine(startVariable):
     if isPalindrome(startVariable):
@@ -21,5 +23,6 @@ def palindromeMachine(startVariable):
         except:
             return -1
 
-result = palindromeMachine(15)
+
+result = palindromeMachine(12)
 print(result)

@@ -19,13 +19,12 @@ Tailwind is a postcss plugin. Vue CLI, Webpack, Next.JS already sports postcss.
 
    ```javascript
    module.exports = {
-     plugins: [require("tailwindcss"), require("autoprefixer")]
+   	plugins: [require('tailwindcss'), require('autoprefixer')],
    };
    ```
 
-4. Create a css/tailwind.css file in the root client folder
+4. Replace the content of App.css with the following
 
-5. Copy the preflight code into the tailwind.css file:
    ```css
    @tailwind base;
 
@@ -33,11 +32,39 @@ Tailwind is a postcss plugin. Vue CLI, Webpack, Next.JS already sports postcss.
 
    @tailwind utilities;
    ```
-6. Add a build command to scripts in package.json
 
-   `"build:css": "postcss css/tailwind.css -o public/build/tailwind.css",`
+5. Add a build command to scripts in package.json
 
-7. Run `npm run build:css`
-8. Add import statement to index.tsx
+   `"build:css": "postcss src/App.css -o src/tailwind.css",`
 
-   `import './public/build/tailwind.css';`
+6. Run `npm run build:css`
+7. Add import statement to index.tsx
+
+   `import './tailwind.css';`
+
+8. Purge css:
+   replace the code in postcss.config.js with the following:
+
+```javascript
+// The following is copied
+
+// postcss.config.js
+const purgecss = require('@fullhuman/postcss-purgecss')({
+	// Specify the paths to all of the template files in your project
+	content: ['./src/**/*.html', './src/**/*.tsx', './public/index.html'],
+
+	// Include any special characters you're using in this regular expression
+	defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+});
+
+module.exports = {
+	plugins: [
+		require('tailwindcss'),
+		require('autoprefixer'),
+		...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+	],
+};
+```
+
+9. Add Tailwind to gitignore:
+   `/src/tailwind-styles.css /src/tailwind.css`
