@@ -24,6 +24,20 @@ var app = new Vue({
 			vm.tasks = response.data.tasks;
 		});
 	},
+	computed: {
+		taskList() {
+			function compare(a, b) {
+				if (a.completed > b.completed) {
+					return 1;
+				}
+				if (a.completed < b.completed) {
+					return -1;
+				}
+				return 0;
+			}
+			return this.tasks.sort(compare);
+		},
+	},
 	methods: {
 		createTask() {
 			var vm = this;
@@ -33,6 +47,19 @@ var app = new Vue({
 			sendRequest('', 'post', formData).then(function(response) {
 				vm.tasks.push(response.data.task);
 				vm.task = '';
+			});
+		},
+		completeTask(id, index) {
+			var vm = this;
+			sendRequest('' + id + '/complete/', 'post').then(function(response) {
+				vm.tasks.splice(index, 1);
+				vm.tasks.push(response.data.task);
+			});
+		},
+		deleteTask(id, index) {
+			var vm = this;
+			sendRequest('' + id + '/delete/', 'post').then(function(response) {
+				vm.tasks.splice(index, 1);
 			});
 		},
 	},
