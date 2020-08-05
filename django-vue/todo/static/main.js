@@ -20,7 +20,7 @@ var app = new Vue({
 	},
 	created() {
 		var vm = this;
-		var r = sendRequest('', 'get').then(function (response) {
+		var r = sendRequest('', 'get').then(function(response) {
 			vm.tasks = response.data.tasks;
 		});
 	},
@@ -30,7 +30,7 @@ var app = new Vue({
 			var formData = new FormData();
 			formData.append('title', this.task);
 
-			sendRequest('', 'post', formData).then(function (response) {
+			sendRequest('', 'post', formData).then(function(response) {
 				vm.tasks.push(response.data.task);
 				vm.task = '';
 			});
