@@ -97,7 +97,6 @@ while sum(p_cards) < 21:
         if sum(p_cards) == 21:
             print('*******************You are the Winner !!*****************************')
 
-
     else:
         dealer_choice()
         break
