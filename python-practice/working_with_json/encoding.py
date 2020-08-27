@@ -9,3 +9,12 @@ dump = json.dumps(obj)
 
 print(dump)
 print(type(dump)) # str
+
+
+# To format with indentation, use indent=2
+formatted_dump = json.dumps(obj, indent=2)
+print('\n Indented:')
+print(formatted_dump)
+
+
+# loads() is for string, load() is for file
