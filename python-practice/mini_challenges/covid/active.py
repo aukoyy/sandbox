@@ -9,9 +9,6 @@ data = urlopen(target_url)
 data = data.read().decode()
 data = json.loads(data)
 
-timeStamp = data['timeStamp']
-currentCases = data['activeCases']['total']
-
 
 with open(file_path, "r") as file:
     first_line = file.readline()
@@ -19,6 +16,8 @@ with open(file_path, "r") as file:
       pass
 
 change_from_last_run = currentCases - int(last_line.replace(',',''))
+timeStamp = data['timeStamp']
+currentCases = data['activeCases']['total']
 
 
 f = open(file_path, "a")
