@@ -15,10 +15,10 @@ with open(file_path, "r") as file:
     for last_line in file:
       pass
 
-change_from_last_run = currentCases - int(last_line.replace(',',''))
+
 timeStamp = data['timeStamp']
 currentCases = data['activeCases']['total']
-
+change_from_last_run = currentCases - int(last_line.replace(',',''))
 
 f = open(file_path, "a")
 f.write('\n\n')
