@@ -2,66 +2,114 @@ Last updated: August 27, 2020, 11:17 GMT
 Change from last run: 0
 6,638,202
 
-Last updated: August 27, 2020, 12:17 GMT
-Change from last run: 1,149
-6,639,351
+Last updated: August 28, 2020, 05:39 GMT
+Change from last run: 59,730
+6,698,394
 
-Last updated: August 27, 2020, 14:06 GMT
-Change from last run: -1,969
-6,637,382
-
-Last updated: August 27, 2020, 14:06 GMT
+Last updated: August 28, 2020, 05:39 GMT
 Change from last run: 0
-6,637,382
+6,698,394
 
-Last updated: August 27, 2020, 14:14 GMT
-Change from last run: 553
-6,637,935
+Last updated: August 28, 2020, 06:01 GMT
+Change from last run: 973
+6,699,367
 
-Last updated: August 27, 2020, 14:14 GMT
+Last updated: August 28, 2020, 06:01 GMT
 Change from last run: 0
-6,637,935
+6,699,367
 
-Last updated: August 27, 2020, 14:14 GMT
+Last updated: August 28, 2020, 06:01 GMT
 Change from last run: 0
-6,637,935
+6,699,367
 
-Last updated: August 27, 2020, 14:18 GMT
-Change from last run: 570
-6,638,505
-
-Last updated: August 27, 2020, 14:18 GMT
+Last updated: August 28, 2020, 06:01 GMT
 Change from last run: 0
-6,638,505
+6,699,367
 
-Last updated: August 27, 2020, 14:18 GMT
+Last updated: August 28, 2020, 06:16 GMT
+Change from last run: -2
+6,699,365
+
+Last updated: August 28, 2020, 06:50 GMT
+Change from last run: 3,849
+6,703,214
+
+Last updated: August 28, 2020, 06:50 GMT
 Change from last run: 0
-6,638,505
+6,703,214
 
-Last updated: August 27, 2020, 14:18 GMT
+Last updated: August 28, 2020, 07:15 GMT
 Change from last run: 0
-6,638,505
+6,703,214
 
-Last updated: August 27, 2020, 14:28 GMT
-Change from last run: -108
-6,638,397
-
-Last updated: August 27, 2020, 14:29 GMT
+Last updated: August 28, 2020, 07:32 GMT
 Change from last run: 0
-6,638,397
+6,703,214
 
-Last updated: August 27, 2020, 14:29 GMT
+Last updated: August 28, 2020, 07:32 GMT
+Change from last run: 376
+6,703,590
+
+Last updated: August 28, 2020, 07:32 GMT
 Change from last run: 0
-6,638,397
+6,703,590
 
-Last updated: August 27, 2020, 14:38 GMT
-Change from last run: 267
-6,638,664
-
-Last updated: August 27, 2020, 14:38 GMT
+Last updated: August 28, 2020, 07:32 GMT
 Change from last run: 0
-6,638,664
+6,703,590
 
-Last updated: August 27, 2020, 14:38 GMT
+Last updated: August 28, 2020, 07:32 GMT
 Change from last run: 0
-6,638,664
+6,703,590
+
+Last updated: August 28, 2020, 07:32 GMT
+Change from last run: 0
+6,703,590
+
+Last updated: August 28, 2020, 08:43 GMT
+Change from last run: 4,056
+6,707,646
+
+Last updated: August 28, 2020, 08:47 GMT
+Change from last run: 0
+6,707,646
+
+Last updated: August 28, 2020, 09:01 GMT
+Change from last run: -1,429
+6,706,217
+
+Last updated: August 28, 2020, 09:07 GMT
+Change from last run: 0
+6,706,217
+
+Last updated: August 28, 2020, 10:09 GMT
+Change from last run: -176
+6,706,041
+
+Last updated: August 28, 2020, 12:37 GMT
+Change from last run: 2,677
+6,708,718
+
+Last updated: August 28, 2020, 19:16 GMT
+Change from last run: 45,144
+6,753,862
+
+Last updated: August 29, 2020, 08:35 GMT
+Change from last run: 24,382
+6,778,244
+
+Last updated: August 29, 2020, 08:35 GMT
+Change from last run: 0
+6,778,244
+
+Last updated: August 30, 2020, 16:30 GMT
+Change from last run: 42,510
+6,820,754
+
+Last updated: August 30, 2020, 17:21 GMT
+Change from last run: 3,680
+6,824,434
+
+Last updated: August 31, 2020, 07:15 GMT
+Change from last run: 7,797
+6,832,231

@@ -25,6 +25,6 @@ f.write('\n\n')
 f.write(timeStamp + '\n')
 f.write('Change from last run: {:,}'.format(change_from_last_run))
 f.write('\n' + str('{:,}'.format(currentCases)))
-#print('Active cases: ' + str('{:,}'.format(currentCases)) + '\nChange from last: ' + str('{:,}'.format(change_from_last_run)) )
+print('\nChange from last run : ' + str('{:,}'.format(change_from_last_run)) + '\n')
 
 f.close()
