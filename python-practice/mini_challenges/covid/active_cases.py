@@ -31,8 +31,8 @@ def create_new_week(current_cases):
     }}
   else:# new low
     new_week = {str(week): {
-      'high': current_cases,
-      'low': lastLow,
+      'high': lastLow,
+      'low': current_cases,
       'diff': current_cases - lastLow
     }}
   activeDict['weeks'].update(new_week)
