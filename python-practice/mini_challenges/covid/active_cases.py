@@ -19,11 +19,22 @@ with open(file_path) as f:
 
 
 def create_new_week(current_cases):
-  new_week = {str(week): {
-    'high': current_cases,
-    'low': current_cases,
-    'diff': 0
-  }}
+  #TODO: add from last week
+  lastHigh = activeDict['weeks'][str(week-1)]['high']
+  lastLow = activeDict['weeks'][str(week-1)]['low']
+  
+  if lastHigh < current_cases: # new high
+    new_week = {str(week): {
+      'high': current_cases,
+      'low': lastHigh,
+      'diff': current_cases - lastHigh
+    }}
+  else:# new low
+    new_week = {str(week): {
+      'high': current_cases,
+      'low': lastLow,
+      'diff': current_cases - lastLow
+    }}
   activeDict['weeks'].update(new_week)
 
 
