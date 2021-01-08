@@ -17,7 +17,7 @@ data = json.loads(response.text)
 file_path = '/Users/auk/code/projects/sandbox/python-practice/mini_challenges/covid/active_cases.json'
 
 
-confirmed = 88830659  # data[0]['confirmed']
+confirmed = data[0]['confirmed']
 recovered = data[0]['recovered']
 deaths = data[0]['deaths']
 active = confirmed - recovered - deaths
@@ -47,22 +47,35 @@ def create_new_week(current_cases):
     activeDict['weeks'].update(new_week)
 
 
+changeStatusString = ''
+
+
 def update_current_week(current_cases):
-    if current_cases < activeDict['weeks'][str(week)]['low']:
-        activeDict['weeks'][str(week)]['low'] = current_cases
-        activeDict['weeks'][str(week)]['diff'] = activeDict['weeks'][str(
-            week)]['high'] - current_cases
-    if current_cases > activeDict['weeks'][str(week)]['high']:
+    newHigh = current_cases > activeDict['weeks'][str(week)]['high']
+    newLow = current_cases < activeDict['weeks'][str(week)]['low']
+
+    global changeStatusString
+    if newHigh:
+        changeStatusString = 'new high'
         activeDict['weeks'][str(week)]['high'] = current_cases
+
         activeDict['weeks'][str(week)]['diff'] = current_cases - \
             activeDict['weeks'][str(week)]['low']
+    elif newLow:
+        changeStatusString = 'new low'
+        activeDict['weeks'][str(week)]['low'] = current_cases
+        activeDict['weeks'][str(week)]['diff'] = current_cases - \
+            activeDict['weeks'][str(week)]['high']
+    else:
+        changeStatusString = 'within range'
 
 
-if activeDict['totals']['current_week'] < week:
+newWeek = activeDict['totals']['current_week'] < week
+if newWeek:
     activeDict['totals']['current_week'] = week
     create_new_week(active)
-else:
-    update_current_week(active)
+
+update_current_week(active)
 
 with open(file_path, 'w') as f:
     json.dump(activeDict, f, indent=2)
@@ -76,10 +89,12 @@ SPANISH_CONFIRMED_ADJUSTED = SPANISH_CONFIRMED * POPULATION_ADJUSTMENT_CONSTANT
 SPANISH_DEATHS_ADJUSTED = SPANISH_DEATHS * POPULATION_ADJUSTMENT_CONSTANT
 
 print('### Covid Update ### (<absolute compered to spanish flue>) (adjusted comparason)')
-change_this_week = activeDict['weeks'][str(week)]['diff']
-print(f'Change: {change_this_week:,}')
+
 print(
     f'Confirmed: {confirmed:,} ({confirmed/SPANISH_CONFIRMED*100:.2f}%) ({confirmed/SPANISH_CONFIRMED_ADJUSTED*100:.2f}%)')
 print(f'Recovered: {recovered:,}')
 print(f'Deaths: {deaths:,} ({deaths/SPANISH_DEATHS*100:.2f}%) ({deaths/SPANISH_DEATHS_ADJUSTED*100:.2f}%)')
 print(f'Active: {active:,}')
+
+change_this_week = activeDict['weeks'][str(week)]['diff']
+print(f'Change: {change_this_week:,} ({changeStatusString})')
