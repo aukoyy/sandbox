@@ -6,10 +6,10 @@ import requests
 date = datetime.date.today()
 week = int(date.strftime("%W"))
 
-url = "https://covid-19-data.p.rapidapi.com/totals"
+url = "https://coronavirus-smartable.p.rapidapi.com/stats/v1/global/"
 headers = {
-    'x-rapidapi-key': "d39c80742emsha4a71413f74e250p132e54jsnf58a627c3630",
-    'x-rapidapi-host': "covid-19-data.p.rapidapi.com"
+    "x-rapidapi-key": "d39c80742emsha4a71413f74e250p132e54jsnf58a627c3630",
+    "x-rapidapi-host": "coronavirus-smartable.p.rapidapi.com",
 }
 response = requests.request("GET", url, headers=headers)
 data = json.loads(response.text)
@@ -17,11 +17,10 @@ data = json.loads(response.text)
 file_path = '/Users/auk/code/projects/sandbox/python-practice/mini_challenges/covid/active_cases.json'
 
 
-confirmed = data[0]['confirmed']
-recovered = data[0]['recovered']
-deaths = data[0]['deaths']
+confirmed = data['stats']['totalConfirmedCases']
+recovered = data['stats']['totalRecoveredCases']
+deaths = data['stats']['totalDeaths']
 active = confirmed - recovered - deaths
-
 
 with open(file_path) as f:
     activeDict = json.load(f)
@@ -87,14 +86,16 @@ SPANISH_DEATHS = 50000000
 POPULATION_ADJUSTMENT_CONSTANT = 4.19
 SPANISH_CONFIRMED_ADJUSTED = SPANISH_CONFIRMED * POPULATION_ADJUSTMENT_CONSTANT
 SPANISH_DEATHS_ADJUSTED = SPANISH_DEATHS * POPULATION_ADJUSTMENT_CONSTANT
+WORLD_POPULATION = 7.6*10**9
 
-print('### Covid Update ### (<absolute compered to spanish flue>) (adjusted comparason)')
+print('### Covid Update ### (compered to spanish flue) (adjusted comparason) (% of world)')
 
 print(
-    f'Confirmed: {confirmed:,} ({confirmed/SPANISH_CONFIRMED*100:.2f}%) ({confirmed/SPANISH_CONFIRMED_ADJUSTED*100:.2f}%)')
+    f'Confirmed: {confirmed:,} ({confirmed/SPANISH_CONFIRMED*100:.2f}%) ({confirmed/SPANISH_CONFIRMED_ADJUSTED*100:.2f}%) ({confirmed/WORLD_POPULATION*100:.2f}%)')
 print(f'Recovered: {recovered:,}')
-print(f'Deaths: {deaths:,} ({deaths/SPANISH_DEATHS*100:.2f}%) ({deaths/SPANISH_DEATHS_ADJUSTED*100:.2f}%)')
-print(f'Active: {active:,}')
-
+print(f'Deaths: {deaths:,} ({deaths/SPANISH_DEATHS*100:.2f}%) ({deaths/SPANISH_DEATHS_ADJUSTED*100:.2f}%) ({deaths/WORLD_POPULATION*100:.2f}%)')
 change_this_week = activeDict['weeks'][str(week)]['diff']
-print(f'Change: {change_this_week:,} ({changeStatusString})')
+print(
+    f'\nActive: {active:,} | {change_this_week:,} | {changeStatusString}')
+
+#print(f'Change: {change_this_week:,} ({changeStatusString})')
