@@ -17,9 +17,9 @@ data = json.loads(response.text)
 file_path = '/Users/auk/code/projects/sandbox/python-practice/mini_challenges/covid/active_cases.json'
 
 
-confirmed = data['stats']['totalConfirmedCases']
-recovered = data['stats']['totalRecoveredCases']
-deaths = data['stats']['totalDeaths']
+confirmed = 188693805
+deaths = 4067180
+recovered = 172492795
 active = confirmed - recovered - deaths
 
 with open(file_path) as f:
@@ -46,27 +46,20 @@ def create_new_week(current_cases):
     activeDict['weeks'].update(new_week)
 
 
-changeStatusString = ''
-
-
 def update_current_week(current_cases):
     newHigh = current_cases > activeDict['weeks'][str(week)]['high']
     newLow = current_cases < activeDict['weeks'][str(week)]['low']
 
-    global changeStatusString
     if newHigh:
         changeStatusString = 'new high'
         activeDict['weeks'][str(week)]['high'] = current_cases
 
         activeDict['weeks'][str(week)]['diff'] = current_cases - \
             activeDict['weeks'][str(week)]['low']
-    elif newLow:
-        changeStatusString = 'new low'
+    else:
         activeDict['weeks'][str(week)]['low'] = current_cases
         activeDict['weeks'][str(week)]['diff'] = current_cases - \
             activeDict['weeks'][str(week)]['high']
-    else:
-        changeStatusString = 'within range'
 
 
 newWeek = activeDict['totals']['current_week'] < week
@@ -96,6 +89,4 @@ print(f'Recovered: {recovered:,}')
 print(f'Deaths: {deaths:,} ({deaths/SPANISH_DEATHS*100:.2f}%) ({deaths/SPANISH_DEATHS_ADJUSTED*100:.2f}%) ({deaths/WORLD_POPULATION*100:.2f}%)')
 change_this_week = activeDict['weeks'][str(week)]['diff']
 print(
-    f'\nActive: {active:,} | {change_this_week:,} | {changeStatusString}')
-
-#print(f'Change: {change_this_week:,} ({changeStatusString})')
+    f'\nActive: {active:,} | {change_this_week:,}')
